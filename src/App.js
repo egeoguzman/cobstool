@@ -7,8 +7,8 @@ import { SignInHeader } from "./Components/Login/SignInHeader";
 import { SignInFooter } from "./Components/Login/SignInFooter";
 import "./styles.css";
 
-import awsExports from "./aws-exports";
-Amplify.configure(awsExports);
+import awsmobile from "./aws-exports";
+Amplify.configure(awsmobile);
 
 export function App({ signOut, user }) {
   return (
