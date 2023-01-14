@@ -5,13 +5,13 @@
 :root {
   --amplify-fonts-default-variable: "Open Sans";
   --amplify-fonts-default-static: "Open Sans";
-  --amplify-colors-brand-primary-10: var(--amplify-colors-blue-10);
-  --amplify-colors-brand-primary-20: var(--amplify-colors-blue-20);
-  --amplify-colors-brand-primary-40: var(--amplify-colors-blue-40);
-  --amplify-colors-brand-primary-60: var(--amplify-colors-blue-60);
-  --amplify-colors-brand-primary-80: var(--amplify-colors-blue-80);
-  --amplify-colors-brand-primary-90: var(--amplify-colors-blue-90);
-  --amplify-colors-brand-primary-100: var(--amplify-colors-blue-100);
+  --amplify-colors-brand-primary-10: var(--color-text-button-primary-default-iy7hsx,#fff) !important;
+  --amplify-colors-brand-primary-20: var(--color-text-button-primary-default-iy7hsx,#fff) !important;
+  --amplify-colors-brand-primary-40: var(--color-text-button-primary-default-iy7hsx,#fff) !important;
+  --amplify-colors-brand-primary-60: var(--color-text-button-primary-default-iy7hsx,#fff) !important;
+  --amplify-colors-brand-primary-80: var(--color-background-button-primary-default-qvzkqw,#ec7211) !important;
+  --amplify-colors-brand-primary-90: var(--color-background-button-primary-default-qvzkqw,#ec7211) !important;
+  --amplify-colors-brand-primary-100: var(--color-background-button-primary-default-qvzkqw,#ec7211) !important;
   --amplify-colors-brand-secondary-10: var(--amplify-colors-neutral-10);
   --amplify-colors-brand-secondary-20: var(--amplify-colors-neutral-20);
   --amplify-colors-brand-secondary-40: var(--amplify-colors-neutral-40);
@@ -25,8 +25,11 @@
   --amplify-colors-border-primary: var(--amplify-colors-neutral-40);
   --amplify-colors-border-secondary: var(--amplify-colors-neutral-20);
   --amplify-colors-border-tertiary: var(--amplify-colors-neutral-10);
-  --amplify-colors-background-secondary: #ffffff;
+  --amplify-colors-background-primary: var(--amplify-colors-white) !important;
+  --amplify-components-authenticator-modal-background-color: var(--amplify-colors-white) !important;
   --amplify-components-tabs-item-border-color: var(--amplify-colors-neutral-60);
+  --amplify-components-button-primary-background-color: var(--color-background-button-primary-default-qvzkqw,#ec7211) !important;
+  --amplify-components-link-color: var(--amplify-components-text-color);
 
   --amplify-radii-small: 0;
   --amplify-radii-medium: 0;

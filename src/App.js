@@ -1,4 +1,4 @@
-import { Amplify } from "aws-amplify";
+import { Amplify, Auth } from "aws-amplify";
 
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import { Header } from "./Components/General/Header";
@@ -7,8 +7,9 @@ import { SignInHeader } from "./Components/Login/SignInHeader";
 import { SignInFooter } from "./Components/Login/SignInFooter";
 import "./styles.css";
 
-import awsmobile from "./aws-exports";
-Amplify.configure(awsmobile);
+import awsconfig from "./aws-exports";
+Amplify.configure(awsconfig);
+Auth.configure(awsconfig);
 
 export function App({ signOut, user }) {
   return (
