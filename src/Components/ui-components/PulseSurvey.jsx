@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import * as React from "react";
+import Rating from '@mui/material/Rating';
 import {
   Button,
   Flex,
@@ -15,7 +16,7 @@ import {
 } from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { fetchByPath, validateField } from "./utils";
-export default function CSATsurvey(props) {
+export default function PulseSurvey(props) {
   const { onSubmit, onCancel, onValidate, onChange, overrides, ...rest } =
     props;
   const initialValues = {
@@ -23,6 +24,7 @@ export default function CSATsurvey(props) {
     Field1: "",
     Field0: "",
   };
+  const [ratingValue, newValue] = React.useState(2);
   const [Field2, setField2] = React.useState(initialValues.Field2);
   const [Field1, setField1] = React.useState(initialValues.Field1);
   const [Field0, setField0] = React.useState(initialValues.Field0);
@@ -88,15 +90,25 @@ export default function CSATsurvey(props) {
         }
         await onSubmit(modelFields);
       }}
-      {...getOverrideProps(overrides, "CSATsurvey")}
+      {...getOverrideProps(overrides, "PulseSurvey")}
       {...rest}
     >
       <Heading
         children="Pulse Survey"
         {...getOverrideProps(overrides, "SectionalElement0")}
       ></Heading>
+      <Rating
+        name="pulse-rating"
+        size="large"
+        disabled
+        value={ratingValue}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+      />
       <TextAreaField
-        label="Continue"
+        label="Start"
+        disabled
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -120,6 +132,7 @@ export default function CSATsurvey(props) {
       ></TextAreaField>
       <TextAreaField
         label="Stop"
+        disabled
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -142,7 +155,8 @@ export default function CSATsurvey(props) {
         {...getOverrideProps(overrides, "Field1")}
       ></TextAreaField>
       <TextAreaField
-        label="Start"
+        label="Continue"
+        disabled
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -170,6 +184,7 @@ export default function CSATsurvey(props) {
       >
         <Button
           children="Clear"
+          disabled
           type="reset"
           onClick={(event) => {
             event.preventDefault();
@@ -183,6 +198,7 @@ export default function CSATsurvey(props) {
         >
           <Button
             children="Cancel"
+            disabled
             type="button"
             onClick={() => {
               onCancel && onCancel();
@@ -191,6 +207,7 @@ export default function CSATsurvey(props) {
           ></Button>
           <Button
             children="Submit"
+            disabled
             type="submit"
             variation="primary"
             isDisabled={Object.values(errors).some((e) => e?.hasError)}

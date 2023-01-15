@@ -5,4 +5,4 @@
  **************************************************************************/
 
 export { default as studioTheme } from "./studioTheme";
-export { default as CSATsurvey } from "./CSATsurvey";
+export { default as PulseSurvey } from "./PulseSurvey";

@@ -12,30 +12,30 @@ export declare type ValidationResponse = {
     errorMessage?: string;
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
-export declare type CSATsurveyInputValues = {
+export declare type PulseSurveyInputValues = {
     Field2?: string;
     Field1?: string;
     Field0?: string;
 };
-export declare type CSATsurveyValidationValues = {
+export declare type PulseSurveyValidationValues = {
     Field2?: ValidationFunction<string>;
     Field1?: ValidationFunction<string>;
     Field0?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
-export declare type CSATsurveyOverridesProps = {
-    CSATsurveyGrid?: PrimitiveOverrideProps<GridProps>;
+export declare type PulseSurveyOverridesProps = {
+    PulseSurveyGrid?: PrimitiveOverrideProps<GridProps>;
     SectionalElement0?: PrimitiveOverrideProps<HeadingProps>;
     Field2?: PrimitiveOverrideProps<TextAreaFieldProps>;
     Field1?: PrimitiveOverrideProps<TextAreaFieldProps>;
     Field0?: PrimitiveOverrideProps<TextAreaFieldProps>;
 } & EscapeHatchProps;
-export declare type CSATsurveyProps = React.PropsWithChildren<{
-    overrides?: CSATsurveyOverridesProps | undefined | null;
+export declare type PulseSurveyProps = React.PropsWithChildren<{
+    overrides?: PulseSurveyOverridesProps | undefined | null;
 } & {
-    onSubmit: (fields: CSATsurveyInputValues) => void;
+    onSubmit: (fields: PulseSurveyInputValues) => void;
     onCancel?: () => void;
-    onChange?: (fields: CSATsurveyInputValues) => CSATsurveyInputValues;
-    onValidate?: CSATsurveyValidationValues;
+    onChange?: (fields: PulseSurveyInputValues) => PulseSurveyInputValues;
+    onValidate?: PulseSurveyValidationValues;
 } & React.CSSProperties>;
-export default function CSATsurvey(props: CSATsurveyProps): React.ReactElement;
+export default function PulseSurvey(props: PulseSurveyProps): React.ReactElement;
