@@ -3,7 +3,7 @@
   "cognitoConfig": {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "cobsam49634b86",
+    "resourceNameTruncated": "cobsambfdcf685",
     "userPoolName": "cobsamplified",
     "autoVerifiedAttributes": [
       "email"
@@ -24,15 +24,18 @@
       "Requires Symbols",
       "Requires Uppercase"
     ],
-    "requiredAttributes": [],
+    "requiredAttributes": [
+      "name",
+      "family_name"
+    ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "cobsam49634b86_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "cobsambfdcf685_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "49634b86",
+    "sharedId": "bfdcf685",
     "resourceName": "cobsamplified",
     "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",

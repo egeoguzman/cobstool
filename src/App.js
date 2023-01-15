@@ -5,6 +5,7 @@ import { Header } from "./Components/General/Header";
 import { Footer } from "./Components/General/Footer";
 import { SignInHeader } from "./Components/Login/SignInHeader";
 import { SignInFooter } from "./Components/Login/SignInFooter";
+import { ProductCreateForm } from './ui-components';
 import "./styles.css";
 
 import awsconfig from "./aws-exports";
@@ -14,7 +15,7 @@ Auth.configure(awsconfig);
 export function App({ signOut, user }) {
   return (
     <main>
-      <h1>Hello {user.username}</h1>
+      <h1>Hello {user.name}</h1>
       <button onClick={signOut}>Sign out</button>
     </main>
   );
