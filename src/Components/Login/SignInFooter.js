@@ -7,6 +7,7 @@ export function SignInFooter() {
   return (
     <Flex justifyContent="center" padding={`0 0 ${tokens.space.medium}`}>
       <Link onClick={toResetPassword}>Reset your password</Link>
+      <Link>Manager Login</Link>
     </Flex>
   );
 }

@@ -2,7 +2,8 @@ import { useTheme, Heading, Tabs, TabItem, Flex, Card, Grid } from "@aws-amplify
 import { useState } from 'react';
 import { Amplify, Auth } from "aws-amplify";
 import { withAuthenticator } from "@aws-amplify/ui-react";
-import { PulseSurvey } from '../ui-components';
+import { PulseSurvey } from '../pulseSurvey-ui-components';
+import { AddCustomers } from '../addCustomer-ui-components';
 import awsconfig from "../../aws-exports";
 Amplify.configure(awsconfig);
 Auth.configure(awsconfig);
@@ -24,6 +25,9 @@ export function SAPage(us) {
             </TabItem>
             <TabItem title="Pulse Survey Preview">
               <PulseSurvey/>
+            </TabItem>
+            <TabItem title="Create Customer">
+             <AddCustomers/>
             </TabItem>
             <TabItem title="CSAT Survey Preview">
               Tab content #3
