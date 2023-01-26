@@ -17,7 +17,7 @@ export function SAPage(us) {
     return (
       <Grid columnGap="0.5rem" rowGap="0.5rem" templateColumns="1fr 1fr 1fr">
         <Card columnStart="1" columnEnd="-1">
-          <Heading width='30vw' level={2} > {u.attributes.name} </Heading>         
+          <Heading width='30vw' level={2} > {u.attributes['custom:Full-Name']} </Heading>         
         </Card>
         <Card columnStart="1" columnEnd="-1">
           <Tabs currentIndex={index} spacing="relative" justifyContent="center" onChange={(i: number) => setIndex(i)}>
