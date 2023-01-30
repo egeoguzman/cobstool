@@ -1,19 +1,13 @@
-import { useTheme, Heading, Tabs, TabItem, Card, Grid, Image, Link, } from "@aws-amplify/ui-react";
 import { useState, useEffect } from 'react';
 import { Amplify, Auth, API, graphqlOperation } from "aws-amplify";
-import { View } from "@aws-amplify/ui-react";
-
-
 import { useTheme, Heading, Tabs, TabItem, Flex, Card, Grid,Table,
   Image,
   Link,
+  View,
   TableCell,
   TableBody,
   TableHead,
   TableRow,ThemeProvider, Theme,Button, Alert} from "@aws-amplify/ui-react";
-
-import { useState } from 'react';
-import { Amplify, Auth } from "aws-amplify";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import { PulseSurvey } from '../pulseSurvey-ui-components';
 import { AddCustomers } from '../addCustomer-ui-components';
@@ -22,38 +16,6 @@ import { listCustomers } from '../../graphql/queries';
 
 //import { Customertable } from 'Users/rachowa/cobstool/src/Components/Customercontroller-ui-components/Customertable';
 import awsconfig from "../../aws-exports";
-
-
-
-import { View } from '@aws-amplify/ui-react';
-
-const theme: Theme = {
-  name: 'table-theme',
-  tokens: {
-    components: {
-      table: {
-        row: {
-          hover: {
-            backgroundColor: { value: '{colors.orange.20}' },
-          },
-
-          striped: {
-            backgroundColor: { value: '{colors.orange.10}' },
-          },
-        },
-
-        header: {
-          color: { value: '{colors.orange.80}' },
-          fontSize: { value: '{fontSizes.xl}' },
-        },
-
-        data: {
-          fontWeight: { value: '{fontWeights.semibold}' },
-        },
-      },
-    },
-  },
-};
 
 
 Amplify.configure(awsconfig);
