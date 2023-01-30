@@ -1,17 +1,18 @@
 
 import { useTheme, Heading, Tabs, TabItem, Flex, Card, Grid,Table,
+  Image,
+  Link,
   TableCell,
   TableBody,
   TableHead,
   TableRow,ThemeProvider, Theme,Button, Alert} from "@aws-amplify/ui-react";
-
-import { useTheme, Heading, Tabs, TabItem, Flex, Card, Grid, Image, Link, Button } from "@aws-amplify/ui-react";
 
 import { useState } from 'react';
 import { Amplify, Auth } from "aws-amplify";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import { PulseSurvey } from '../pulseSurvey-ui-components';
 import { AddCustomers } from '../addCustomer-ui-components';
+import pulsesurveyqr from '../../Images/pulse-survey-qr.png';
 //import { Customertable } from 'Users/rachowa/cobstool/src/Components/Customercontroller-ui-components/Customertable';
 import awsconfig from "../../aws-exports";
 
@@ -46,11 +47,6 @@ const theme: Theme = {
     },
   },
 };
-
-
- 
-
-import pulsesurveyqr from '../../Images/pulse-survey-qr.png';
 
 Amplify.configure(awsconfig);
 Auth.configure(awsconfig);
