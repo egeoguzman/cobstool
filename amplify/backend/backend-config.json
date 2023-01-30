@@ -75,6 +75,8 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
+<<<<<<< HEAD
+=======
   },
   "parameters": {
     "AMPLIFY_function_cobsamplifiedPostConfirmation_deploymentBucketName": {
@@ -93,5 +95,6 @@
         }
       ]
     }
+>>>>>>> 3041cd5d9a3ef020de1c62f0db6ec6a0cdbce265
   }
 }
