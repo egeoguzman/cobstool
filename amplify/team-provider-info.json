@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-cobsamplified-dev-162615-unauthRole",
       "StackName": "amplify-cobsamplified-dev-162615",
       "StackId": "arn:aws:cloudformation:us-west-2:050380431651:stack/amplify-cobsamplified-dev-162615/828fb960-9103-11ed-9ccc-02cf007ab88d",
-      "AmplifyAppId": "d2wy6j4r2vgy4z"
+      "AmplifyAppId": "d2wy6j4r2vgy4z",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-cobsamplified-dev-162615-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
