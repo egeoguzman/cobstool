@@ -8,5 +8,22 @@ type User @model
   phone_number: String!
   full_name:String!
   alias: String!
+
+}
+
+type Customer @model
+  @auth(rules: [
+    { allow: groups, groups: ["Admin"] },
+    { allow: owner, ownerField: "username"}
+  ]) {
+  id: ID!
+  full_name: String!
+  company_name: String!
+  job_title: String!
+  is_technical: String!
+  email: String!
+  salesforce: String!
+  automatic_survey_sender: String!
   description: String!
+
 }

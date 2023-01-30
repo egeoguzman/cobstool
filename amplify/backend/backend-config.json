@@ -1,5 +1,27 @@
 {
   "api": {
+    "AdminQueries": {
+      "authorizationType": "AMAZON_COGNITO_USER_POOLS",
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "cobsamplified"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "AdminQueries4de9b4b3"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
     "cobscognito2ddb": {
       "dependsOn": [
         {
@@ -70,6 +92,20 @@
     }
   },
   "function": {
+    "AdminQueries4de9b4b3": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "cobsamplified"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "cobsamplifiedPostConfirmation": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -77,6 +113,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_AdminQueries4de9b4b3_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueries4de9b4b3"
+        }
+      ]
+    },
+    "AMPLIFY_function_AdminQueries4de9b4b3_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueries4de9b4b3"
+        }
+      ]
+    },
     "AMPLIFY_function_cobsamplifiedPostConfirmation_deploymentBucketName": {
       "usedBy": [
         {
