@@ -75,5 +75,26 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
+<<<<<<< HEAD
+=======
+  },
+  "parameters": {
+    "AMPLIFY_function_cobsamplifiedPostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "cobsamplifiedPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_cobsamplifiedPostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "cobsamplifiedPostConfirmation"
+        }
+      ]
+    }
+>>>>>>> 3041cd5d9a3ef020de1c62f0db6ec6a0cdbce265
   }
 }

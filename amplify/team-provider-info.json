@@ -15,6 +15,15 @@
     "categories": {
       "auth": {
         "cobsamplified": {}
+      },
+      "function": {
+        "cobsamplifiedPostConfirmation": {
+          "deploymentBucketName": "amplify-cobsamplified-dev-162615-deployment",
+          "s3Key": "amplify-builds/cobsamplifiedPostConfirmation-38452b66516630363073-build.zip"
+        }
+      },
+      "api": {
+        "cobscognito2ddb": {}
       }
     }
   }
