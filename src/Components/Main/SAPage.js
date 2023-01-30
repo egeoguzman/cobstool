@@ -1,16 +1,64 @@
-import { useTheme, Heading, Tabs, TabItem, Flex, Card, Grid, Image, Link, Button } from "@aws-amplify/ui-react";
-import { useState } from 'react';
-import { Amplify, Auth } from "aws-amplify";
-import { withAuthenticator } from "@aws-amplify/ui-react";
+import { useTheme, Heading, Tabs, TabItem, Card, Grid, Image, Link, } from "@aws-amplify/ui-react";
+import { useState, useEffect } from 'react';
+import { Amplify, Auth, API, graphqlOperation } from "aws-amplify";
+import { View } from "@aws-amplify/ui-react";
 import { PulseSurvey } from '../pulseSurvey-ui-components';
 import { AddCustomers } from '../addCustomer-ui-components';
 import awsconfig from "../../aws-exports";
 import pulsesurveyqr from '../../Images/pulse-survey-qr.png';
+import { listCustomers } from '../../graphql/queries';
+
 Amplify.configure(awsconfig);
 Auth.configure(awsconfig);
 
+const theme: Theme = {
+  name: 'table-theme',
+  tokens: {
+    components: {
+      table: {
+        row: {
+          hover: {
+            backgroundColor: { value: '{colors.orange.20}' },
+          },
+
+          striped: {
+            backgroundColor: { value: '{colors.orange.10}' },
+          },
+        },
+
+        header: {
+          color: { value: '{colors.orange.80}' },
+          fontSize: { value: '{fontSizes.xl}' },
+        },
+
+        data: {
+          fontWeight: { value: '{fontWeights.semibold}' },
+        },
+      },
+    },
+  },
+};
 
 export function SAPage(us) {
+
+  const [customers, setCustomers] = useState([]);
+
+  useEffect(() => {
+      fetchCustomers();
+  }, []);
+
+  const fetchCustomers = async () => {
+      try {
+          const customerData = await API.graphql(graphqlOperation(listCustomers));
+          const customerList = customerData.data.listCustomers.items;
+          console.log('song list', customerList);
+          setCustomers(customerList);
+      } catch (error) {
+          console.log('error on fetching customers', error);
+      }
+  };
+
+    // console.log(customers)
     const { tokens } = useTheme();
     const { u } = us;
     const [index, setIndex] = useState(0);

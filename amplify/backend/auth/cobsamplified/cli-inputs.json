@@ -84,6 +84,7 @@
       "Ref": "AWS::StackId"
     },
     "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PostConfirmation\",\n    \"lambdaFunctionName\": \"cobsamplifiedPostConfirmation\"\n  }\n]",
-    "permissions": []
+    "permissions": [],
+    "adminQueryGroup": "admin"
   }
 }
