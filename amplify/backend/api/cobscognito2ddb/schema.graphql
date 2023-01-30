@@ -8,5 +8,5 @@ type User @model
   phone_number: String!
   full_name:String!
   alias: String!
-  description: String
+  description: String!
 }
