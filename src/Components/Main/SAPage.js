@@ -106,6 +106,8 @@ export function SAPage(us) {
           <TableCell as="th">Technical /Non - Technical</TableCell>
           <TableCell as="th">Creation Date</TableCell>
           <TableCell as="th">Salesforce Account Link</TableCell>
+          <TableCell as="th">Date Last Survey Sent</TableCell>
+          <TableCell as="th">Send Survey Now</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -118,6 +120,16 @@ export function SAPage(us) {
           <TableCell>Technical</TableCell>
           <TableCell>1-1-2023</TableCell>
           <TableCell>https://salesforce/account/link/bdkhvdfcvbjkdfkj</TableCell>
+          <TableCell>1-1-2023</TableCell>
+          <TableCell><Button
+  variation="primary"
+  size="small"
+  loadingText="Please wait while we redirect you :) "
+  onClick={() => alert('Send Survey')}
+  ariaLabel=""
+>
+  Send Survey
+</Button></TableCell>
         </TableRow>
         <TableRow>
         <TableCell>Sarah Norris</TableCell>
@@ -128,6 +140,16 @@ export function SAPage(us) {
           <TableCell>Technical</TableCell>
           <TableCell>12-1-2023</TableCell>
           <TableCell>https://salesforce/account/link/bdkhvdfcvbjkdfkj</TableCell>
+          <TableCell>12-1-2023</TableCell>
+          <TableCell><Button
+  variation="primary"
+  size="small"
+  loadingText="Please wait while we redirect you :) "
+  onClick={() => alert('Send Survey')}
+  ariaLabel=""
+>
+  Send Survey
+</Button></TableCell>
         </TableRow>
         <TableRow>
         <TableCell>Mark Murray</TableCell>
@@ -138,6 +160,17 @@ export function SAPage(us) {
           <TableCell>Non-Technical</TableCell>
           <TableCell>4-1-2023</TableCell>
           <TableCell>https://salesforce/account/link/bdkhvdfcvbjkdfkj</TableCell>
+          <TableCell>4-1-2023</TableCell>
+          <TableCell><Button
+  variation="primary"
+  size="small"
+  loadingText="Please wait while we redirect you :) "
+  onClick={() => alert('Send Survey')}
+  ariaLabel=""
+>
+  Send Survey
+</Button>
+</TableCell>
         </TableRow>
         <TableRow>
         <TableCell>Joanna Harris</TableCell>
@@ -148,6 +181,16 @@ export function SAPage(us) {
           <TableCell>Technical</TableCell>
           <TableCell>4-1-2023</TableCell>
           <TableCell>https://salesforce/account/link/bdkhvdfcvbjkdfkj</TableCell>
+          <TableCell>4-1-2023</TableCell>
+          <TableCell><Button
+  variation="primary"
+  size="small"
+  loadingText="Please wait while we redirect you :) "
+  onClick={() => alert('Send Survey')}
+  ariaLabel=""
+>
+  Send Survey
+</Button></TableCell>
         </TableRow>
         <TableRow>
         <TableCell>Max Manson</TableCell>
@@ -158,6 +201,16 @@ export function SAPage(us) {
           <TableCell>Technical</TableCell>
           <TableCell>17-1-2023</TableCell>
           <TableCell>https://salesforce/account/link/bdkhvdfcvbjkdfkj</TableCell>
+          <TableCell>4-1-2023</TableCell>
+          <TableCell><Button
+  variation="primary"
+  size="small"
+  loadingText="Please wait while we redirect you :) "
+  onClick={() => alert('Send Survey')}
+  ariaLabel=""
+>
+  Send Survey
+</Button></TableCell>
         </TableRow>
       </TableBody>
     </Table>
