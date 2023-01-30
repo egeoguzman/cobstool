@@ -62,7 +62,7 @@ export default function AddCustomers(props) {
     Field6: [{ type: "Required" }],
     Field7: [],
     Field5: [{ type: "URL" }],
-    Field8: [],
+    Field8: []
   };
   const runValidationTasks = async (
     fieldName,
@@ -169,6 +169,7 @@ export default function AddCustomers(props) {
               Field6,
               Field7,
               Field5,
+              Field8,
             };
             const result = onChange(modelFields);
             value = result?.Field3 ?? value;
@@ -197,6 +198,7 @@ export default function AddCustomers(props) {
               Field6,
               Field7,
               Field5,
+              Field8,
             };
             const result = onChange(modelFields);
             value = result?.Field0 ?? value;
@@ -225,6 +227,7 @@ export default function AddCustomers(props) {
               Field6,
               Field7,
               Field5,
+              Field8,
             };
             const result = onChange(modelFields);
             value = result?.Field2 ?? value;
@@ -253,6 +256,7 @@ export default function AddCustomers(props) {
               Field6: value,
               Field7,
               Field5,
+              Field8,
             };
             const result = onChange(modelFields);
             value = result?.Field6 ?? value;
@@ -281,6 +285,7 @@ export default function AddCustomers(props) {
               Field6,
               Field7: value,
               Field5,
+              Field8
             };
             const result = onChange(modelFields);
             value = result?.Field7 ?? value;
@@ -319,6 +324,7 @@ export default function AddCustomers(props) {
               Field6,
               Field7,
               Field5: value,
+              Field8,
             };
             const result = onChange(modelFields);
             value = result?.Field5 ?? value;
