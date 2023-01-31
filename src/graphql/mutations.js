@@ -66,7 +66,6 @@ export const createCustomer = /* GraphQL */ `
       email
       salesforce
       automatic_survey_sender
-      sa_alias
       createdAt
       updatedAt
       username
@@ -87,7 +86,6 @@ export const updateCustomer = /* GraphQL */ `
       email
       salesforce
       automatic_survey_sender
-      sa_alias
       createdAt
       updatedAt
       username
@@ -108,7 +106,6 @@ export const deleteCustomer = /* GraphQL */ `
       email
       salesforce
       automatic_survey_sender
-      sa_alias
       createdAt
       updatedAt
       username
