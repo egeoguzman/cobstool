@@ -141,7 +141,7 @@ export function SAPage(us) {
   variation="primary"
   size="small"
   loadingText="Please wait while we redirect you :) "
-  onClick={() => alert('Send Survey')}
+  onClick={() => alert('Survey Sent!')}
   ariaLabel=""
 >
   Send Survey
@@ -161,7 +161,7 @@ export function SAPage(us) {
   variation="primary"
   size="small"
   loadingText="Please wait while we redirect you :) "
-  onClick={() => alert('Send Survey')}
+  onClick={() => alert('Survey Sent!')}
   ariaLabel=""
 >
   Send Survey
@@ -181,7 +181,7 @@ export function SAPage(us) {
   variation="primary"
   size="small"
   loadingText="Please wait while we redirect you :) "
-  onClick={() => alert('Send Survey')}
+  onClick={() => alert('Survey Sent!')}
   ariaLabel=""
 >
   Send Survey
@@ -202,7 +202,7 @@ export function SAPage(us) {
   variation="primary"
   size="small"
   loadingText="Please wait while we redirect you :) "
-  onClick={() => alert('Send Survey')}
+  onClick={() => alert('Survey Sent!')}
   ariaLabel=""
 >
   Send Survey
@@ -222,7 +222,7 @@ export function SAPage(us) {
   variation="primary"
   size="small"
   loadingText="Please wait while we redirect you :) "
-  onClick={() => alert('Send Survey')}
+  onClick={() => alert('Survey Sent!')}
   ariaLabel=""
 >
   Send Survey
