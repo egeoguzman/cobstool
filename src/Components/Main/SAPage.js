@@ -144,8 +144,6 @@ export function SAPage(us) {
 
             <br />
 
-<<<<<<< HEAD
-
 <br>
 
 </br>
@@ -296,7 +294,7 @@ export function SAPage(us) {
       </Grid>
     );
   }
-=======
+  
             <ThemeProvider theme={theme} colorMode="light">
               <Table highlightOnHover variation="striped" size="small">
                 <TableHead>
@@ -347,4 +345,4 @@ export function SAPage(us) {
     </Grid>
   );
 }
->>>>>>> ceff7cf5f72bc95dc81253100d66b38212860d1a
+
