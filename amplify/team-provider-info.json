@@ -20,10 +20,15 @@
         "cobsamplifiedPostConfirmation": {
           "deploymentBucketName": "amplify-cobsamplified-dev-162615-deployment",
           "s3Key": "amplify-builds/cobsamplifiedPostConfirmation-38452b66516630363073-build.zip"
+        },
+        "AdminQueries4de9b4b3": {
+          "deploymentBucketName": "amplify-cobsamplified-dev-162615-deployment",
+          "s3Key": "amplify-builds/AdminQueries4de9b4b3-4175713568493448504b-build.zip"
         }
       },
       "api": {
-        "cobscognito2ddb": {}
+        "cobscognito2ddb": {},
+        "AdminQueries": {}
       }
     }
   }

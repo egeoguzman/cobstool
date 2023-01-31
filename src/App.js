@@ -1,4 +1,4 @@
-import { Amplify, Auth } from "aws-amplify";
+//import { Amplify, Auth } from "aws-amplify";
 import { useTheme, Heading, Tabs, TabItem, Flex, Card, Grid, Image, Link, Button, CheckboxField, TextField } from "@aws-amplify/ui-react";
 import { withAuthenticator, useAuthenticator, Authenticator } from "@aws-amplify/ui-react";
 import { Header } from "./Components/General/Header";
@@ -6,6 +6,8 @@ import { Footer } from "./Components/General/Footer";
 import { SignInHeader } from "./Components/Login/SignInHeader";
 import { SignInFooter } from "./Components/Login/SignInFooter";
 import { SAPage } from "./Components/Main/SAPage";
+import Amplify from '@aws-amplify/core';
+import Auth from '@aws-amplify/auth';
 import "./styles.css";
 
 import awsconfig from "./aws-exports";

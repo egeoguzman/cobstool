@@ -1,24 +1,25 @@
-
+import { useState, useEffect } from 'react';
+import { Amplify, Auth, API, graphqlOperation } from "aws-amplify";
 import { useTheme, Heading, Tabs, TabItem, Flex, Card, Grid,Table,
   Image,
   Link,
+  View,
   TableCell,
   TableBody,
   TableHead,
   TableRow,ThemeProvider, Theme,Button, Alert} from "@aws-amplify/ui-react";
-
-import { useState } from 'react';
-import { Amplify, Auth } from "aws-amplify";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import { PulseSurvey } from '../pulseSurvey-ui-components';
 import { AddCustomers } from '../addCustomer-ui-components';
 import pulsesurveyqr from '../../Images/pulse-survey-qr.png';
+import { listCustomers } from '../../graphql/queries';
+
 //import { Customertable } from 'Users/rachowa/cobstool/src/Components/Customercontroller-ui-components/Customertable';
 import awsconfig from "../../aws-exports";
 
 
-
-import { View } from '@aws-amplify/ui-react';
+Amplify.configure(awsconfig);
+Auth.configure(awsconfig);
 
 const theme: Theme = {
   name: 'table-theme',
@@ -48,11 +49,26 @@ const theme: Theme = {
   },
 };
 
-Amplify.configure(awsconfig);
-Auth.configure(awsconfig);
-
-
 export function SAPage(us) {
+
+  const [customers, setCustomers] = useState([]);
+
+  useEffect(() => {
+      fetchCustomers();
+  }, []);
+
+  const fetchCustomers = async () => {
+      try {
+          const customerData = await API.graphql(graphqlOperation(listCustomers));
+          const customerList = customerData.data.listCustomers.items;
+          console.log('song list', customerList);
+          setCustomers(customerList);
+      } catch (error) {
+          console.log('error on fetching customers', error);
+      }
+  };
+
+    // console.log(customers)
     const { tokens } = useTheme();
     const { u } = us;
     const [index, setIndex] = useState(0);

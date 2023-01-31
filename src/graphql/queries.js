@@ -9,7 +9,6 @@ export const getUser = /* GraphQL */ `
       phone_number
       full_name
       alias
-      description
       createdAt
       updatedAt
       username
@@ -29,7 +28,47 @@ export const listUsers = /* GraphQL */ `
         phone_number
         full_name
         alias
-        description
+        createdAt
+        updatedAt
+        username
+      }
+      nextToken
+    }
+  }
+`;
+export const getCustomer = /* GraphQL */ `
+  query GetCustomer($id: ID!) {
+    getCustomer(id: $id) {
+      id
+      full_name
+      company_name
+      job_title
+      is_technical
+      email
+      salesforce
+      automatic_survey_sender
+      createdAt
+      updatedAt
+      username
+    }
+  }
+`;
+export const listCustomers = /* GraphQL */ `
+  query ListCustomers(
+    $filter: ModelCustomerFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCustomers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        full_name
+        company_name
+        job_title
+        is_technical
+        email
+        salesforce
+        automatic_survey_sender
         createdAt
         updatedAt
         username

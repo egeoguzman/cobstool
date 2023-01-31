@@ -12,7 +12,6 @@ export const createUser = /* GraphQL */ `
       phone_number
       full_name
       alias
-      description
       createdAt
       updatedAt
       username
@@ -30,7 +29,6 @@ export const updateUser = /* GraphQL */ `
       phone_number
       full_name
       alias
-      description
       createdAt
       updatedAt
       username
@@ -48,7 +46,66 @@ export const deleteUser = /* GraphQL */ `
       phone_number
       full_name
       alias
-      description
+      createdAt
+      updatedAt
+      username
+    }
+  }
+`;
+export const createCustomer = /* GraphQL */ `
+  mutation CreateCustomer(
+    $input: CreateCustomerInput!
+    $condition: ModelCustomerConditionInput
+  ) {
+    createCustomer(input: $input, condition: $condition) {
+      id
+      full_name
+      company_name
+      job_title
+      is_technical
+      email
+      salesforce
+      automatic_survey_sender
+      createdAt
+      updatedAt
+      username
+    }
+  }
+`;
+export const updateCustomer = /* GraphQL */ `
+  mutation UpdateCustomer(
+    $input: UpdateCustomerInput!
+    $condition: ModelCustomerConditionInput
+  ) {
+    updateCustomer(input: $input, condition: $condition) {
+      id
+      full_name
+      company_name
+      job_title
+      is_technical
+      email
+      salesforce
+      automatic_survey_sender
+      createdAt
+      updatedAt
+      username
+    }
+  }
+`;
+export const deleteCustomer = /* GraphQL */ `
+  mutation DeleteCustomer(
+    $input: DeleteCustomerInput!
+    $condition: ModelCustomerConditionInput
+  ) {
+    deleteCustomer(input: $input, condition: $condition) {
+      id
+      full_name
+      company_name
+      job_title
+      is_technical
+      email
+      salesforce
+      automatic_survey_sender
       createdAt
       updatedAt
       username
