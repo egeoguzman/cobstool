@@ -88,6 +88,7 @@ export function SAPage(us) {
                 <TableCell> {customer.job_title}</TableCell>
                 <TableCell> {customer.is_technical}</TableCell>
                 <TableCell> {customer.salesforce}</TableCell>
+                <TableCell> {customer.sa_alias}</TableCell>
                 <TableCell> {customer.automatic_survey_sender}</TableCell>
                 <TableCell> <Button
                         variation="primary"
@@ -105,6 +106,8 @@ export function SAPage(us) {
   const { tokens } = useTheme();
   const { u } = us;
   const [index, setIndex] = useState(0);
+  const sa_mail = u.attributes["email"];
+
   return (
     <Grid columnGap="0.5rem" rowGap="0.5rem" templateColumns="1fr 1fr 1fr">
       <Card columnStart="1" columnEnd="-1">
@@ -154,6 +157,7 @@ export function SAPage(us) {
                     <TableCell as="th">Job Title</TableCell>
                     <TableCell as="th">Technical / Non-Technical</TableCell>
                     <TableCell as="th">Salesforce Account Link</TableCell>
+                    <TableCell as="th">Solution Architect</TableCell>
                     <TableCell as="th">Automatic Sending</TableCell>
                     <TableCell as="th">Send Survey Now</TableCell>
                   </TableRow>
@@ -165,12 +169,12 @@ export function SAPage(us) {
             </ThemeProvider>
           </TabItem>
           <TabItem title="Create Customer">
-            <AddCustomers />
+            <AddCustomers sa_mail={sa_mail} />
           </TabItem>
           <TabItem title="Pulse Survey Preview">
             <Grid templateColumns="2fr 1fr" gap={tokens.space.small}>
               <Card columnStart="1" columnEnd="2">
-                <PulseSurvey />
+                <PulseSurvey/>
               </Card>
               <Card columnStart="2" columnEnd="-1">
                 <Image
