@@ -9,6 +9,9 @@ type User @model
   full_name:String!
   alias: String!
 
+  description: String
+
+
 }
 
 type Customer @model
