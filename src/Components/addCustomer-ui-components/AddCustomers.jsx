@@ -129,6 +129,7 @@ export default function AddCustomers(props) {
           is_technical: modelFields["Field7"],
           automatic_survey_sender: modelFields["Field8"],
           salesforce: modelFields["Field5"],
+          sa_alias: 
 
         };
       }
@@ -142,6 +143,7 @@ export default function AddCustomers(props) {
             is_technical: modelFields["Field7"],
             automatic_survey_sender: modelFields["Field8"],
             salesforce: "",
+            sa_alias: 
   
           };
         }
