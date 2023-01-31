@@ -13,6 +13,7 @@ import {
   Grid,
   Heading,
   TextAreaField,
+  TextField
 } from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { fetchByPath, validateField } from "./utils";
@@ -97,6 +98,30 @@ export default function PulseSurvey(props) {
         children="Pulse Survey"
         {...getOverrideProps(overrides, "SectionalElement0")}
       ></Heading>
+      <TextField
+        label="Event Name"
+        disabled
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              Field2: value,
+              Field1,
+              Field0,
+            };
+            const result = onChange(modelFields);
+            value = result?.Field2 ?? value;
+          }
+          if (errors.Field2?.hasError) {
+            runValidationTasks("Field2", value);
+          }
+          setField2(value);
+        }}
+        onBlur={() => runValidationTasks("Field2", Field2)}
+        errorMessage={errors.Field2?.errorMessage}
+        hasError={errors.Field2?.hasError}
+        {...getOverrideProps(overrides, "Field2")}
+      ></TextField>
       <Rating
         name="pulse-rating"
         size="large"

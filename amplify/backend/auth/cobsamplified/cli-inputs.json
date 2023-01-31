@@ -3,7 +3,7 @@
   "cognitoConfig": {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "cobsambfdcf685",
+    "resourceNameTruncated": "cobsam2787b5a3",
     "userPoolName": "cobsamplified",
     "autoVerifiedAttributes": [
       "email"
@@ -25,17 +25,17 @@
       "Requires Uppercase"
     ],
     "requiredAttributes": [
-      "name",
-      "family_name"
+      "email",
+      "phone_number"
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "cobsambfdcf685_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "cobsam2787b5a3_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "bfdcf685",
+    "sharedId": "2787b5a3",
     "resourceName": "cobsamplified",
     "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",
@@ -49,6 +49,42 @@
     "thirdPartyAuth": false,
     "authProviders": [],
     "usernameCaseSensitive": false,
-    "useEnabledMfas": true
+    "useEnabledMfas": true,
+    "authRoleArn": {
+      "Fn::GetAtt": [
+        "AuthRole",
+        "Arn"
+      ]
+    },
+    "unauthRoleArn": {
+      "Fn::GetAtt": [
+        "UnauthRole",
+        "Arn"
+      ]
+    },
+    "breakCircularDependency": true,
+    "dependsOn": [
+      {
+        "category": "function",
+        "resourceName": "cobsamplifiedPostConfirmation",
+        "triggerProvider": "Cognito",
+        "attributes": [
+          "Arn",
+          "Name"
+        ]
+      }
+    ],
+    "triggers": {
+      "PostConfirmation": [
+        "custom"
+      ]
+    },
+    "hostedUI": false,
+    "parentStack": {
+      "Ref": "AWS::StackId"
+    },
+    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PostConfirmation\",\n    \"lambdaFunctionName\": \"cobsamplifiedPostConfirmation\"\n  }\n]",
+    "permissions": [],
+    "adminQueryGroup": "admin"
   }
 }
