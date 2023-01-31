@@ -24,6 +24,4 @@ type Customer @model
   email: String!
   salesforce: String!
   automatic_survey_sender: String!
-  sa_alias: String!
-
 }
