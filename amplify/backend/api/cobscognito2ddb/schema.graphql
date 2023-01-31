@@ -9,6 +9,9 @@ type User @model
   full_name:String!
   alias: String!
 
+  description: String
+
+
 }
 
 type Customer @model
@@ -24,4 +27,22 @@ type Customer @model
   email: String!
   salesforce: String!
   automatic_survey_sender: String!
+
+}
+
+type Customer @model
+  @auth(rules: [
+    { allow: groups, groups: ["Admin"] },
+    { allow: owner, ownerField: "username", operations: [read] }
+  ]){
+  id: ID!
+  full_name: String!
+  company_name: String!
+  job_title: String!
+  is_technical: Boolean!
+  creation_date: String!
+  email: String!
+  phone_number: String!
+  salesforce: String!
+  description: String
 }
