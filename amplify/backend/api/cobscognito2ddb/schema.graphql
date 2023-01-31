@@ -8,9 +8,9 @@ type User @model
   phone_number: String!
   full_name:String!
   alias: String!
-<<<<<<< HEAD
+
   description: String
-=======
+
 
 }
 
@@ -28,7 +28,6 @@ type Customer @model
   salesforce: String!
   automatic_survey_sender: String!
 
->>>>>>> 100978197513323a997f250e30ed9876d050d356
 }
 
 type Customer @model

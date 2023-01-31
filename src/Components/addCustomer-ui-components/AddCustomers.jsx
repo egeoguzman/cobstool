@@ -129,20 +129,18 @@ export default function AddCustomers(props) {
           is_technical: modelFields["Field7"],
           automatic_survey_sender: modelFields["Field8"],
           salesforce: modelFields["Field5"],
-
         };
       }
         else {
             data = {
-
+              
             full_name: modelFields["Field3"],
             email: modelFields["Field0"],
             company_name: modelFields["Field2"],
             job_title: modelFields["Field6"],
             is_technical: modelFields["Field7"],
             automatic_survey_sender: modelFields["Field8"],
-            salesforce: "",
-  
+            salesforce: "",  
           };
         }
         console.log(data);
