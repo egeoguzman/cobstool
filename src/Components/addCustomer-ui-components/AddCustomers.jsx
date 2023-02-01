@@ -150,6 +150,7 @@ export default function AddCustomers(props,sa_mail) {
         }
         console.log(data);
         const results = await API.graphql(graphqlOperation(createCustomer, {input: data} ),{authMode:"AMAZON_COGNITO_USER_POOLS"});
+        window.location.reload(false);
       }}
       {...getOverrideProps(overrides, "AddCustomers")}
       {...rest}
