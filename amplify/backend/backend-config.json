@@ -110,6 +110,35 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "cobstoolemailserverless": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ],
+          "category": "api",
+          "resourceName": "cobscognito2ddb"
+        },
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "cobsamplified"
+        },
+        {
+          "attributes": [
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "cobsamplifiedPostConfirmation"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "parameters": {
@@ -142,6 +171,22 @@
         {
           "category": "function",
           "resourceName": "cobsamplifiedPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_cobstoolemailserverless_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "cobstoolemailserverless"
+        }
+      ]
+    },
+    "AMPLIFY_function_cobstoolemailserverless_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "cobstoolemailserverless"
         }
       ]
     }
