@@ -19,6 +19,7 @@ import { Amplify, Auth, API, graphqlOperation } from "aws-amplify";
 import { fetchByPath, validateField } from "./utils";
 import { createCustomer } from '../../graphql/mutations';
 import awsconfig from "../../aws-exports";
+import Swal from 'sweetalert2';
 
 Amplify.configure(awsconfig);
 Auth.configure(awsconfig);
@@ -26,7 +27,7 @@ Auth.configure(awsconfig);
 
 export default function AddCustomers(props,sa_mail) {
   
-  
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
   const { onSubmit, onCancel, onValidate, onChange, overrides, ...rest } =
     props;
   const initialValues = {
@@ -150,6 +151,14 @@ export default function AddCustomers(props,sa_mail) {
         }
         console.log(data);
         const results = await API.graphql(graphqlOperation(createCustomer, {input: data} ),{authMode:"AMAZON_COGNITO_USER_POOLS"});
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Customer is created!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        await sleep(1500)
         window.location.reload(false);
       }}
       {...getOverrideProps(overrides, "AddCustomers")}
