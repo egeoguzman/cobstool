@@ -24,7 +24,8 @@ Amplify.configure(awsconfig);
 Auth.configure(awsconfig);
 
 
-export default function AddCustomers(props) {
+export default function AddCustomers(props,sa_mail) {
+  
   
   const { onSubmit, onCancel, onValidate, onChange, overrides, ...rest } =
     props;
@@ -37,6 +38,8 @@ export default function AddCustomers(props) {
     Field5: "",
     Field8: "",
   };
+  const  sa_alias_mail  = sa_mail;
+  console.log(props)
   const [Field3, setField3] = React.useState(initialValues.Field3);
   const [Field0, setField0] = React.useState(initialValues.Field0);
   const [Field2, setField2] = React.useState(initialValues.Field2);
@@ -129,7 +132,7 @@ export default function AddCustomers(props) {
           is_technical: modelFields["Field7"],
           automatic_survey_sender: modelFields["Field8"],
           salesforce: modelFields["Field5"],
-
+          sa_alias: props.sa_mail,
         };
       }
         else {
@@ -141,8 +144,8 @@ export default function AddCustomers(props) {
             job_title: modelFields["Field6"],
             is_technical: modelFields["Field7"],
             automatic_survey_sender: modelFields["Field8"],
-            salesforce: "",
-  
+            salesforce: "", 
+            sa_alias: props.sa_mail,
           };
         }
         console.log(data);
