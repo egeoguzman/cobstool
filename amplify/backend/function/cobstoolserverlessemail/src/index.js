@@ -5,9 +5,9 @@ const ses = new aws.SES()
  */
 exports.handler = async (event) => {
     
-    const customerName = event.body.customer_name
-    const customerEmail = event.body.customer_email
-
+    const obj = JSON.parse(event.body)
+    const customerName = obj.customer_name;
+    const customerEmail = obj.customer_email;
     await ses
         .sendEmail({
             Destination: {
@@ -33,6 +33,6 @@ exports.handler = async (event) => {
                 'Access-Control-Allow-Methods': 'OPTIONS,POST'
             },
         
-        'body': JSON.stringify('Mail has been sent!')
+        'body': JSON.stringify("Email has been sent!")
   };
 }
