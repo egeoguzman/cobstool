@@ -26,6 +26,7 @@ import { PulseSurvey } from "../pulseSurvey-ui-components";
 import { AddCustomers } from "../addCustomer-ui-components";
 import pulsesurveyqr from "../../Images/pulse-survey-qr.png";
 import { listCustomers } from "../../graphql/queries";
+import Swal from 'sweetalert2';
 
 //import { Customertable } from 'Users/rachowa/cobstool/src/Components/Customercontroller-ui-components/Customertable';
 import awsconfig from "../../aws-exports";
@@ -72,12 +73,13 @@ export function SAPage(us) {
     try {
       const customerData = await API.graphql(graphqlOperation(listCustomers));
       const customerList = customerData.data.listCustomers.items;
-      console.log("customers", customerList);
+      //console.log("customers", customerList);
       setCustomers(customerList);
     } catch (error) {
       console.log("error on fetching customers", error);
     }
   };
+
 
   const items = [];
         for (const customer of customers) {
@@ -93,14 +95,38 @@ export function SAPage(us) {
                 <TableCell> <Button
                         variation="primary"
                         size="small"
-                        loadingText="Please wait while we redirect you :) "
-                        onClick={() => alert("Send Survey")}
                         ariaLabel=""
+                        loadingText="Please wait while we redirect you :) "
+                        onClick={async (event) => {
+                          event.preventDefault();
+                          fetch(
+                            "https://x7pcft3013.execute-api.us-west-2.amazonaws.com/cobstoolserverlessemail",
+                           { 
+                            mode: "no-cors",
+                            method: "POST",
+                            headers: {
+                              Accept: "application/json",
+                              "Content-Type": "application/json"},
+                            body: JSON.stringify({
+                              customer_name: customer.full_name,
+                              customer_email: customer.email,
+                            }),
+                          },                        
+                          );
+                          Swal.fire({
+                            position: 'top',
+                            icon: 'success',
+                            title: 'Reminder has been sent!',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
+                        }
+                      }     
                       >
                         Send Survey
                       </Button></TableCell>
                 </TableRow>)
-        }
+        };
 
   // console.log(customers)
   const { tokens } = useTheme();

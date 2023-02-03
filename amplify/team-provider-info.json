@@ -25,9 +25,9 @@
           "deploymentBucketName": "amplify-cobsamplified-dev-162615-deployment",
           "s3Key": "amplify-builds/AdminQueries4de9b4b3-4175713568493448504b-build.zip"
         },
-        "cobstoolemailserverless": {
+        "cobstoolserverlessemail": {
           "deploymentBucketName": "amplify-cobsamplified-dev-162615-deployment",
-          "s3Key": "amplify-builds/cobstoolemailserverless-576c4f37576549633630-build.zip"
+          "s3Key": "amplify-builds/cobstoolserverlessemail-6f33336963546f797765-build.zip"
         }
       },
       "api": {

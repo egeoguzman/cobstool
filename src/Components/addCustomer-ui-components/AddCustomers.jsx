@@ -40,7 +40,7 @@ export default function AddCustomers(props,sa_mail) {
     Field8: "",
   };
   const  sa_alias_mail  = sa_mail;
-  console.log(props)
+  //console.log(props)
   const [Field3, setField3] = React.useState(initialValues.Field3);
   const [Field0, setField0] = React.useState(initialValues.Field0);
   const [Field2, setField2] = React.useState(initialValues.Field2);
@@ -152,7 +152,7 @@ export default function AddCustomers(props,sa_mail) {
         console.log(data);
         const results = await API.graphql(graphqlOperation(createCustomer, {input: data} ),{authMode:"AMAZON_COGNITO_USER_POOLS"});
         Swal.fire({
-          position: 'top-end',
+          position: 'top',
           icon: 'success',
           title: 'Customer is created!',
           showConfirmButton: false,
