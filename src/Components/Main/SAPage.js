@@ -81,6 +81,18 @@ export function SAPage(us) {
   };
 
 
+  const fetchSurveyResults = async () => {
+    try {
+      const customerData = await API.graphql(graphqlOperation(listCustomers));
+      const customerList = customerData.data.listCustomers.items;
+      //console.log("customers", customerList);
+      setCustomers(customerList);
+    } catch (error) {
+      console.log("error on fetching customers", error);
+    }
+  };
+
+
   const items = [];
         for (const customer of customers) {
             items.push(<TableRow>
@@ -98,28 +110,34 @@ export function SAPage(us) {
                         ariaLabel=""
                         loadingText="Please wait while we redirect you :) "
                         onClick={async (event) => {
-                          event.preventDefault();
-                          fetch(
+                          event.preventDefault()
+                          let data = {
+                            customer_name: customer.full_name,
+                            customer_email: customer.email,
+                          };
+                          let mailSend_res = await fetch(
                             "https://x7pcft3013.execute-api.us-west-2.amazonaws.com/cobstoolserverlessemail",
                            { 
-                            mode: "no-cors",
+                            //mode: "no-cors",
                             method: "POST",
-                            headers: {
-                              Accept: "application/json",
-                              "Content-Type": "application/json"},
-                            body: JSON.stringify({
-                              customer_name: customer.full_name,
-                              customer_email: customer.email,
-                            }),
-                          },                        
-                          );
+                            // headers: {
+                            //   Accept: "application/json",
+                            //   "Content-Type": "application/json",
+                            //   'Access-Control-Allow-Origin': '*',
+                            //   'Access-Control-Allow-Headers': 'Content-Type',},
+                            body: JSON.stringify(data),
+                          });
+                          const mailSend_results = await mailSend_res.json();
+                          console.log(mailSend_results);
+
                           Swal.fire({
                             position: 'top',
                             icon: 'success',
                             title: 'Reminder has been sent!',
                             showConfirmButton: false,
                             timer: 1500
-                          })
+                          });
+
                         }
                       }     
                       >
@@ -164,7 +182,36 @@ export function SAPage(us) {
                 variation="primary"
                 size="small"
                 loadingText="Loading.... "
-                onClick={() => alert("5 out of 10 surveys have been completed")}
+                onClick={async (event) => {
+                  event.preventDefault()
+                  let data = {
+                    sa_alias_query: u.attributes["email"],
+                  };
+                  let surveyCount_res = await fetch(
+                    "https://8wgph4tn7b.execute-api.us-west-2.amazonaws.com/cobstoolserverlesssurveycount",
+                   { 
+                    //mode: "no-cors",
+                    method: "POST",
+                    // headers: {
+                    //   Accept: "application/json",
+                    //   "Content-Type": "application/json",
+                    //   'Access-Control-Allow-Origin': '*',
+                    //   'Access-Control-Allow-Headers': 'Content-Type',},
+                    body: JSON.stringify(data),
+                  });
+                  const surveyCount_results = await surveyCount_res.json();
+                  console.log(surveyCount_results);
+
+                  Swal.fire({
+                    position: 'top',
+                    icon: 'info',
+                    title: `${surveyCount_results.not_filled_count} / ${surveyCount_results.total_customers} of your customers have not filled the survey yet!`,
+                    showConfirmButton: false,
+                    timer: 10000
+                  });
+
+                }
+              } 
                 ariaLabel=""
               >
                 Click me!
@@ -197,7 +244,7 @@ export function SAPage(us) {
           <TabItem title="Create Customer">
             <AddCustomers sa_mail={sa_mail} />
           </TabItem>
-          <TabItem title="Pulse Survey Preview">
+          <TabItem title="On-going Event Feedback Survey Preview">
             <Grid templateColumns="2fr 1fr" gap={tokens.space.small}>
               <Card columnStart="1" columnEnd="2">
                 <PulseSurvey/>
@@ -218,7 +265,6 @@ export function SAPage(us) {
               </Card>
             </Grid>
           </TabItem>
-          <TabItem title="CSAT Survey Preview">Tab content #3</TabItem>
         </Tabs>
       </Card>
     </Grid>
