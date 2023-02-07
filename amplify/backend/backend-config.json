@@ -117,6 +117,7 @@
       "service": "Lambda"
     }
   },
+  "hosting": {},
   "parameters": {
     "AMPLIFY_function_AdminQueries4de9b4b3_deploymentBucketName": {
       "usedBy": [
