@@ -148,7 +148,7 @@ export function SAPage(us) {
                             Swal.fire({
                               position: 'top',
                               icon: 'error',
-                              title: 'Customer has already filled the survey',
+                              title: 'Customer has already completed the survey within the last 6 months!',
                               showConfirmButton: false,
                               timer: 4000
                             });
