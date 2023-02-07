@@ -148,7 +148,7 @@ export function SAPage(us) {
                             Swal.fire({
                               position: 'top',
                               icon: 'error',
-                              title: 'Customer has already completed the survey within the last 6 months!',
+                              text: 'Customer has already completed the survey within the last 6 months!',
                               showConfirmButton: false,
                               timer: 4000
                             });
@@ -242,7 +242,7 @@ export function SAPage(us) {
                   Swal.fire({
                     position: 'top',
                     icon: 'info',
-                    title: `${surveyCount_results.not_filled_count} / ${surveyCount_results.total_customers} of your customers have not filled the survey yet!`,
+                    text: `${surveyCount_results.not_filled_count} / ${surveyCount_results.total_customers} of your customers have not filled the survey yet!`,
                     showConfirmButton: false,
                     timer: 10000
                   });
