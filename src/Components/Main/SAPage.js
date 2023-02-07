@@ -27,6 +27,7 @@ import { AddCustomers } from "../addCustomer-ui-components";
 import pulsesurveyqr from "../../Images/pulse-survey-qr.png";
 import { listCustomers } from "../../graphql/queries";
 import Swal from 'sweetalert2';
+import * as moment from 'moment';
 
 //import { Customertable } from 'Users/rachowa/cobstool/src/Components/Customercontroller-ui-components/Customertable';
 import awsconfig from "../../aws-exports";
@@ -63,7 +64,13 @@ const theme: Theme = {
 };
 
 export function SAPage(us) {
+
+
   const [customers, setCustomers] = useState([]);
+  const { tokens } = useTheme();
+  const { u } = us;
+  const [index, setIndex] = useState(0);
+  const sa_mail = u.attributes["email"];
 
   useEffect(() => {
     fetchCustomers();
@@ -111,12 +118,15 @@ export function SAPage(us) {
                         loadingText="Please wait while we redirect you :) "
                         onClick={async (event) => {
                           event.preventDefault()
-                          let data = {
-                            customer_name: customer.full_name,
-                            customer_email: customer.email,
+
+                          let data_date_comparison = {
+                            sa_mail_query: u.attributes["email"],
+                            customer_mail_query: customer.email,
                           };
-                          let mailSend_res = await fetch(
-                            "https://x7pcft3013.execute-api.us-west-2.amazonaws.com/cobstoolserverlessemail",
+
+
+                          let dateComparison_res = await fetch(
+                            "https://0ndn28yzo2.execute-api.us-west-2.amazonaws.com/cobstoolserverlesstimecomparison",
                            { 
                             //mode: "no-cors",
                             method: "POST",
@@ -125,19 +135,52 @@ export function SAPage(us) {
                             //   "Content-Type": "application/json",
                             //   'Access-Control-Allow-Origin': '*',
                             //   'Access-Control-Allow-Headers': 'Content-Type',},
-                            body: JSON.stringify(data),
-                          });
-                          const mailSend_results = await mailSend_res.json();
-                          console.log(mailSend_results);
-
-                          Swal.fire({
-                            position: 'top',
-                            icon: 'success',
-                            title: 'Reminder has been sent!',
-                            showConfirmButton: false,
-                            timer: 1500
+                            body: JSON.stringify(data_date_comparison),
                           });
 
+                          const dateComparison_results = await dateComparison_res.json();
+                          
+                          const compareTime = new Date(dateComparison_results.updatedAt);
+                          const upTime = moment();
+                          const downTime = moment().subtract(6, 'months');
+                          
+                          if (compareTime >= downTime && compareTime <= upTime) {
+                            Swal.fire({
+                              position: 'top',
+                              icon: 'error',
+                              title: 'Customer has already filled the survey',
+                              showConfirmButton: false,
+                              timer: 4000
+                            });
+                          }
+                          else {
+
+                            let data = {
+                              customer_name: customer.full_name,
+                              customer_email: customer.email,
+                            };
+                            let mailSend_res = await fetch(
+                              "https://x7pcft3013.execute-api.us-west-2.amazonaws.com/cobstoolserverlessemail",
+                             { 
+                              //mode: "no-cors",
+                              method: "POST",
+                              // headers: {
+                              //   Accept: "application/json",
+                              //   "Content-Type": "application/json",
+                              //   'Access-Control-Allow-Origin': '*',
+                              //   'Access-Control-Allow-Headers': 'Content-Type',},
+                              body: JSON.stringify(data),
+                            });
+                            const mailSend_results = await mailSend_res.json();
+  
+                            Swal.fire({
+                              position: 'top',
+                              icon: 'success',
+                              title: 'Reminder has been sent!',
+                              showConfirmButton: false,
+                              timer: 2000
+                            });
+                          }
                         }
                       }     
                       >
@@ -146,11 +189,6 @@ export function SAPage(us) {
                 </TableRow>)
         };
 
-  // console.log(customers)
-  const { tokens } = useTheme();
-  const { u } = us;
-  const [index, setIndex] = useState(0);
-  const sa_mail = u.attributes["email"];
 
   return (
     <Grid columnGap="0.5rem" rowGap="0.5rem" templateColumns="1fr 1fr 1fr">
@@ -200,7 +238,6 @@ export function SAPage(us) {
                     body: JSON.stringify(data),
                   });
                   const surveyCount_results = await surveyCount_res.json();
-                  console.log(surveyCount_results);
 
                   Swal.fire({
                     position: 'top',
