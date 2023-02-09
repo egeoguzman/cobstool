@@ -146,17 +146,8 @@ export default function PulseSurvey(props) {
         hasError={errors.Field2?.hasError}
         {...getOverrideProps(overrides, "Field2")}
       ></TextField>
-      <Rating
-        name="pulse-rating"
-        size="large"
-        disabled
-        value={ratingValue}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
-      />
       <TextAreaField
-        label="Start"
+        label="What can we do to improve the on-going engagement?"
         disabled
         onChange={(e) => {
           let { value } = e.target;
@@ -180,7 +171,7 @@ export default function PulseSurvey(props) {
         {...getOverrideProps(overrides, "Field2")}
       ></TextAreaField>
       <TextAreaField
-        label="Stop"
+        label="What should we change about the on-going engagement?"
         disabled
         onChange={(e) => {
           let { value } = e.target;
@@ -204,7 +195,7 @@ export default function PulseSurvey(props) {
         {...getOverrideProps(overrides, "Field1")}
       ></TextAreaField>
       <TextAreaField
-        label="Continue"
+        label="What do you particularly like about the on-going engagement?"
         disabled
         onChange={(e) => {
           let { value } = e.target;
@@ -227,6 +218,15 @@ export default function PulseSurvey(props) {
         hasError={errors.Field0?.hasError}
         {...getOverrideProps(overrides, "Field0")}
       ></TextAreaField>
+      <Rating
+        name="pulse-rating"
+        size="large"
+        disabled
+        value={ratingValue}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+      />
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}
