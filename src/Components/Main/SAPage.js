@@ -281,7 +281,7 @@ export function SAPage(us) {
           <TabItem title="Create Customer">
             <AddCustomers sa_mail={sa_mail} />
           </TabItem>
-          <TabItem title="On-going Event Feedback Survey Preview">
+          <TabItem title="Ongoing Engagement Feedback Preview">
             <Grid templateColumns="2fr 1fr" gap={tokens.space.small}>
               <Card columnStart="1" columnEnd="2">
                 <PulseSurvey/>
