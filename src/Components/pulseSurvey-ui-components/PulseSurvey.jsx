@@ -7,6 +7,7 @@
 /* eslint-disable */
 import * as React from "react";
 import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
 import {
   Button,
   Flex,
@@ -218,6 +219,7 @@ export default function PulseSurvey(props) {
         hasError={errors.Field0?.hasError}
         {...getOverrideProps(overrides, "Field0")}
       ></TextAreaField>
+      <Typography component="legend">How satisfied are you with the on-going engagement?</Typography>
       <Rating
         name="pulse-rating"
         size="large"
