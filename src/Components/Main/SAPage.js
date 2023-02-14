@@ -154,10 +154,14 @@ export function SAPage(us) {
                             });
                           }
                           else {
+                            let url = new URL('https://dev.d2z7h9t7m3t599.amplifyapp.com')
+                            url.searchParams.append('sa_email', customer.sa_alias)
+                            url.searchParams.append('customer_email', customer.email)
 
                             let data = {
                               customer_name: customer.full_name,
                               customer_email: customer.email,
+                              survey_link: url.toString(),
                             };
                             let mailSend_res = await fetch(
                               "https://x7pcft3013.execute-api.us-west-2.amazonaws.com/cobstoolserverlessemail",
