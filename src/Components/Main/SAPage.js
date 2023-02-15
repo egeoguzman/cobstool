@@ -20,6 +20,7 @@ import {
   Theme,
   Button,
   Alert,
+  SearchField,
 } from "@aws-amplify/ui-react";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import { PulseSurvey } from "../pulseSurvey-ui-components";
@@ -100,10 +101,11 @@ export function SAPage(us) {
     }
   };
 
-
   const items = [];
         for (const customer of customers) {
-            items.push(<TableRow>
+
+            items.push(              
+              <TableRow>
                 <TableCell> {customer.full_name} </TableCell>  
                 <TableCell> {customer.email} </TableCell>  
                 <TableCell> {customer.company_name}</TableCell>
@@ -195,9 +197,12 @@ export function SAPage(us) {
                 </TableRow>)
         };
 
+  
+
   let url_sa = new URL("https://dev.d2z7h9t7m3t599.amplifyapp.com");
   url_sa.searchParams.append('sa_email', sa_mail);
   const survey_link_sa = url_sa.toString();
+
 
   return (
     <Grid columnGap="0.5rem" rowGap="0.5rem" templateColumns="1fr 1fr 1fr">
@@ -263,9 +268,7 @@ export function SAPage(us) {
                 Click me!
               </Button>
             </Alert>
-
             <br />
-
             <ThemeProvider theme={theme} colorMode="light">
               <Table highlightOnHover variation="striped" size="small">
                 <TableHead>
