@@ -27,6 +27,7 @@ import { AddCustomers } from "../addCustomer-ui-components";
 import pulsesurveyqr from "../../Images/pulse-survey-qr.png";
 import { listCustomers } from "../../graphql/queries";
 import Swal from 'sweetalert2';
+import{ QRCode, QRCodeCanvas} from "qrcode.react";
 import * as moment from 'moment';
 
 //import { Customertable } from 'Users/rachowa/cobstool/src/Components/Customercontroller-ui-components/Customertable';
@@ -193,6 +194,9 @@ export function SAPage(us) {
                 </TableRow>)
         };
 
+  let url_sa = new URL("https://dev.d2z7h9t7m3t599.amplifyapp.com");
+  url_sa.searchParams.append('sa_email', sa_mail);
+  const survey_link_sa = url_sa.toString();
 
   return (
     <Grid columnGap="0.5rem" rowGap="0.5rem" templateColumns="1fr 1fr 1fr">
@@ -291,17 +295,33 @@ export function SAPage(us) {
                 <PulseSurvey/>
               </Card>
               <Card columnStart="2" columnEnd="-1">
-                <Image
+                {/* <Image
                   alt="pulse-survey-qr"
                   src={pulsesurveyqr}
                   padding={tokens.space.medium}
-                />
+                /> */}
+                <Flex>
+                <QRCodeCanvas
+                  level="H"
+                  size={300}
+                  value={survey_link_sa}
+                  level={"H"}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginLeft: '25%',
+                    marginTop: '13%',
+                    
+                  }}/>
+                </Flex>
+                  <hr/>
                 <Link
-                  href="https://dev.d2z7h9t7m3t599.amplifyapp.com"
+                  href={survey_link_sa}
                   color="#007EB9"
                   objectFit="cover"
                 >
-                  https://dev.d2z7h9t7m3t599.amplifyapp.com
+                  {survey_link_sa}
                 </Link>
               </Card>
             </Grid>
