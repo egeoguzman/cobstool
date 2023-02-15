@@ -13,7 +13,7 @@ export function SignInFooter() {
   return (
     <Grid
     templateColumns="1fr"
-    templateRows="1rem 4rem"
+    templateRows="1rem 5rem"
     gap={tokens.space.small}
   >
     <View>
