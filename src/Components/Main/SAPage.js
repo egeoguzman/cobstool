@@ -160,6 +160,7 @@ export function SAPage(us) {
                             url.searchParams.append('customer_email', customer.email)
 
                             let data = {
+                              sa_name: u.attributes["custom:Full-Name"],
                               customer_name: customer.full_name,
                               customer_email: customer.email,
                               survey_link: url.toString(),
