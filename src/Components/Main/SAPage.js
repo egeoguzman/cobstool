@@ -252,11 +252,11 @@ export function SAPage(us) {
                     body: JSON.stringify(data),
                   });
                   const surveyCount_results = await surveyCount_res.json();
-
+                  var count_text = (surveyCount_results.not_filled_count > 0) ? `${surveyCount_results.not_filled_count} / ${surveyCount_results.total_customers} of your customers have not filled the survey yet!` : "All of your customers have already submitted the survey";
                   Swal.fire({
                     position: 'top',
                     icon: 'info',
-                    text: `${surveyCount_results.not_filled_count} / ${surveyCount_results.total_customers} of your customers have not filled the survey yet!`,
+                    text: count_text,
                     showConfirmButton: false,
                     timer: 10000
                   });

@@ -18,11 +18,11 @@ import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Amplify, Auth, API, graphqlOperation } from "aws-amplify";
 import { fetchByPath, validateField } from "./utils";
 import { createCustomer } from '../../graphql/mutations';
-import awsconfig from "../../aws-exports";
+import awsmobile from "../../aws-exports";
 import Swal from 'sweetalert2';
 
-Amplify.configure(awsconfig);
-Auth.configure(awsconfig);
+Amplify.configure(awsmobile);
+Auth.configure(awsmobile);
 
 
 export default function AddCustomers(props,sa_mail) {
