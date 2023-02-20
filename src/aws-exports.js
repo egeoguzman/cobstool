@@ -8,6 +8,11 @@ const awsmobile = {
             "name": "AdminQueries",
             "endpoint": "https://at1a077p0i.execute-api.us-west-2.amazonaws.com/dev",
             "region": "us-west-2"
+        },
+        {
+            "name": "ApiGatewayEndpoint",
+            "endpoint": "https://86bm3px8ae.execute-api.us-west-2.amazonaws.com/",
+            "region": "us-west-2"
         }
     ],
     "aws_appsync_graphqlEndpoint": "https://lxj4zh52lnckfnwykbpltxi7ma.appsync-api.us-west-2.amazonaws.com/graphql",

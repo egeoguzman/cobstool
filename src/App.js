@@ -10,9 +10,9 @@ import Amplify from '@aws-amplify/core';
 import Auth from '@aws-amplify/auth';
 import "./styles.css";
 
-import awsconfig from "./aws-exports";
-Amplify.configure(awsconfig);
-Auth.configure(awsconfig);
+import awsmobile from "./aws-exports";
+Amplify.configure(awsmobile);
+Auth.configure(awsmobile);
 
 
 export function App({ signOut, user }) {
