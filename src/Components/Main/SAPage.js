@@ -73,7 +73,7 @@ export function SAPage(us) {
   const { u } = us;
   const [index, setIndex] = useState(0);
   const sa_mail = u.attributes["email"];
-
+  const token = u.signInUserSession.idToken.jwtToken
   useEffect(() => {
     fetchCustomers();
   }, []);
@@ -122,6 +122,10 @@ export function SAPage(us) {
                         onClick={async (event) => {
                           event.preventDefault()
 
+                          var url = new URL('https://dev.d2z7h9t7m3t599.amplifyapp.com')
+                          url.searchParams.append('sa_email', customer.sa_alias)
+                          url.searchParams.append('customer_email', customer.email)
+
                           let data_date_comparison = {
                             sa_mail_query: u.attributes["email"],
                             customer_mail_query: customer.email,
@@ -129,10 +133,13 @@ export function SAPage(us) {
 
 
                           let dateComparison_res = await fetch(
-                            "https://0ndn28yzo2.execute-api.us-west-2.amazonaws.com/cobstoolserverlesstimecomparison",
+                            "https://r3i2ryzl68.execute-api.us-west-2.amazonaws.com/dev/cobstoolserverlesstimecomparison",
                            { 
                             //mode: "no-cors",
                             method: "POST",
+                            headers: {
+                              Authorization: token,
+                            },
                             // headers: {
                             //   Accept: "application/json",
                             //   "Content-Type": "application/json",
@@ -142,25 +149,8 @@ export function SAPage(us) {
                           });
 
                           const dateComparison_results = await dateComparison_res.json();
-                          
-                          const compareTime = new Date(dateComparison_results.updatedAt);
-                          const upTime = moment();
-                          const downTime = moment().subtract(6, 'months');
-                          
-                          if (compareTime >= downTime && compareTime <= upTime) {
-                            Swal.fire({
-                              position: 'top',
-                              icon: 'error',
-                              text: 'Customer has already completed the survey within the last 6 months!',
-                              showConfirmButton: false,
-                              timer: 4000
-                            });
-                          }
-                          else {
-                            let url = new URL('https://dev.d2z7h9t7m3t599.amplifyapp.com')
-                            url.searchParams.append('sa_email', customer.sa_alias)
-                            url.searchParams.append('customer_email', customer.email)
-
+                          if (dateComparison_results.body.updatedAt.length == 0){
+                            console.log("BOS LAA")
                             let data = {
                               sa_name: u.attributes["custom:Full-Name"],
                               customer_name: customer.full_name,
@@ -168,10 +158,13 @@ export function SAPage(us) {
                               survey_link: url.toString(),
                             };
                             let mailSend_res = await fetch(
-                              "https://x7pcft3013.execute-api.us-west-2.amazonaws.com/cobstoolserverlessemail",
+                              "https://r3i2ryzl68.execute-api.us-west-2.amazonaws.com/dev/cobstoolserverlessemail",
                              { 
                               //mode: "no-cors",
                               method: "POST",
+                              headers: {
+                                Authorization: token,
+                              },
                               // headers: {
                               //   Accept: "application/json",
                               //   "Content-Type": "application/json",
@@ -180,7 +173,7 @@ export function SAPage(us) {
                               body: JSON.stringify(data),
                             });
                             const mailSend_results = await mailSend_res.json();
-  
+                            console.log(mailSend_results)
                             Swal.fire({
                               position: 'top',
                               icon: 'success',
@@ -188,7 +181,59 @@ export function SAPage(us) {
                               showConfirmButton: false,
                               timer: 2000
                             });
+
                           }
+
+                          else{
+                            const compareTime = new Date(dateComparison_results.body.updatedAt);
+                            const upTime = moment();
+                            const downTime = moment().subtract(6, 'months');
+                            
+                            if (compareTime >= downTime && compareTime <= upTime) {
+                              Swal.fire({
+                                position: 'top',
+                                icon: 'error',
+                                text: 'Customer has already completed the survey within the last 6 months!',
+                                showConfirmButton: false,
+                                timer: 4000
+                              });
+                            }
+                            else {
+  
+                              let data = {
+                                sa_name: u.attributes["custom:Full-Name"],
+                                customer_name: customer.full_name,
+                                customer_email: customer.email,
+                                survey_link: url.toString(),
+                              };
+                              let mailSend_res = await fetch(
+                                "https://r3i2ryzl68.execute-api.us-west-2.amazonaws.com/dev/cobstoolserverlessemail",
+                               { 
+                                //mode: "no-cors",
+                                method: "POST",
+                                headers: {
+                                  Authorization: token,
+                                },
+                                // headers: {
+                                //   Accept: "application/json",
+                                //   "Content-Type": "application/json",
+                                //   'Access-Control-Allow-Origin': '*',
+                                //   'Access-Control-Allow-Headers': 'Content-Type',},
+                                body: JSON.stringify(data),
+                              });
+                              const mailSend_results = await mailSend_res.json();
+    
+                              Swal.fire({
+                                position: 'top',
+                                icon: 'success',
+                                title: 'Reminder has been sent!',
+                                showConfirmButton: false,
+                                timer: 2000
+                              });
+                            }
+                            
+                          }
+
                         }
                       }     
                       >
@@ -240,10 +285,14 @@ export function SAPage(us) {
                     sa_alias_query: u.attributes["email"],
                   };
                   let surveyCount_res = await fetch(
-                    "https://8wgph4tn7b.execute-api.us-west-2.amazonaws.com/cobstoolserverlesssurveycount",
+                    "https://r3i2ryzl68.execute-api.us-west-2.amazonaws.com/dev/cobstoolserverlesssurveycount",
                    { 
                     //mode: "no-cors",
                     method: "POST",
+                    headers: {
+                      Authorization: token,
+                    },
+                  
                     // headers: {
                     //   Accept: "application/json",
                     //   "Content-Type": "application/json",
@@ -252,7 +301,10 @@ export function SAPage(us) {
                     body: JSON.stringify(data),
                   });
                   const surveyCount_results = await surveyCount_res.json();
-                  var count_text = (surveyCount_results.not_filled_count > 0) ? `${surveyCount_results.not_filled_count} / ${surveyCount_results.total_customers} of your customers have not filled the survey yet!` : "All of your customers have already submitted the survey";
+                  const surveyCount_results_parsed = surveyCount_results.body;
+                  const arr_not_filled_emails = surveyCount_results_parsed.not_filled_emails.map(({S}) => (S));
+                  const str_not_filled_emails = arr_not_filled_emails.toString();
+                  var count_text = (surveyCount_results_parsed.not_filled_count > 0) ? `${surveyCount_results_parsed.not_filled_count} / ${surveyCount_results_parsed.total_customers} of your customers have not filled the survey yet: \n ${str_not_filled_emails}` : "All of your customers have already submitted the survey";
                   Swal.fire({
                     position: 'top',
                     icon: 'info',
