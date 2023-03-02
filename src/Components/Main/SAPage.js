@@ -270,10 +270,9 @@ export function SAPage(us) {
               variation="success"
               isDismissible={true}
               hasIcon={true}
-              heading="Success!!"
+              //heading="Success!!"
             >
-              One of your customers has completed your survey, click the button
-              below to see how many have been completed to date
+              Check which customers have filled in their feedback for you, and which have not done this!
               <Button
                 isFullWidth={true}
                 variation="primary"
