@@ -25,7 +25,7 @@ export function SignInFooter() {
     <View padding="1rem">
     <Flex justifyContent="center"  padding={`0 0 ${tokens.space.large}`}>
       <Text fontWeight={400} fontSize="0.75rem" color='#3D3F43' lineHeight="1.66" style={{ fontFamily: "Amazon Ember"}}>
-      ---STEM-DEMO---By continuing, you agree to the {aws_customer_agreement} or other agreements for AWS services, and the {privacy}. This site uses {cookies}.  See {site_term} .
+      By continuing, you agree to the {aws_customer_agreement} or other agreements for AWS services, and the {privacy}. This site uses {cookies}.  See {site_term} .
       </Text>
     </Flex>
     </View>
